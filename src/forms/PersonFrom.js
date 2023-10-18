@@ -1,8 +1,6 @@
 import React, { useState } from "react";
 
-const PersonFrom = ({ persons, setPersons }) => {
-  //   setPersons([]);
-
+const PersonFrom = ({ persons, addPersonList }) => {
   const personDefaultAttributes = {
     id: "",
     imageAddress: "",
@@ -11,21 +9,24 @@ const PersonFrom = ({ persons, setPersons }) => {
     personSiteLink: "",
   };
 
-  //   const [person, setPerson] = useState({});
-
-  const [customPersons, setCustomPersons] = useState([]);
   const [customPerson, setCustomPerson] = useState(personDefaultAttributes);
-
+  const handleChange = (e) => {
+    setCustomPerson((prevObject) => {
+      return { ...prevObject, [e.target.name]: e.target.value };
+    });
+  };
   const handleSubmit = (e) => {
     e.preventDefault();
 
-    const new_array = customPersons;
-    new_array.push(customPerson);
-    setCustomPersons(new_array);
+    let max_id = 0;
+    persons.map((item) => {
+      if (item.id > max_id) {
+        max_id = item.id;
+      }
+    });
+    customPerson.id = max_id + 1;
+    addPersonList(customPerson);
     setCustomPerson(personDefaultAttributes);
-    console.log("==================");
-    console.log(customPersons);
-    console.log("==================");
   };
 
   return (
@@ -37,13 +38,10 @@ const PersonFrom = ({ persons, setPersons }) => {
             type="text"
             className="form-control"
             id="imageAddress"
+            name="imageAddress"
             placeholder="Enter Image Address"
             value={customPerson.imageAddress}
-            onChange={(e) => {
-              setCustomPerson((prevObject) => {
-                return { ...prevObject, imageAddress: e.target.value };
-              });
-            }}
+            onChange={handleChange}
           />
         </div>
         <div className="form-group">
@@ -53,12 +51,9 @@ const PersonFrom = ({ persons, setPersons }) => {
             className="form-control"
             value={customPerson.personName}
             id="personName"
+            name="personName"
             placeholder="Enter Name"
-            onChange={(e) => {
-              setCustomPerson((prevObject) => {
-                return { ...prevObject, personName: e.target.value };
-              });
-            }}
+            onChange={handleChange}
           />
         </div>
         <div className="form-group">
@@ -68,12 +63,9 @@ const PersonFrom = ({ persons, setPersons }) => {
             type="text"
             className="form-control"
             id="personBio"
+            name="personBio"
             placeholder="Enter Person's Bio"
-            onChange={(e) => {
-              setCustomPerson((prevObject) => {
-                return { ...prevObject, personBio: e.target.value };
-              });
-            }}
+            onChange={handleChange}
           />
         </div>
         <div className="form-group">
@@ -83,13 +75,10 @@ const PersonFrom = ({ persons, setPersons }) => {
             type="text"
             className="form-control"
             id="personSiteLink"
+            name="personSiteLink"
             aria-describedby="emailHelp"
             placeholder="Enter Website"
-            onChange={(e) => {
-              setCustomPerson((prevObject) => {
-                return { ...prevObject, personSiteLink: e.target.value };
-              });
-            }}
+            onChange={handleChange}
           />
         </div>
         <button type="submit" className="btn btn-primary">

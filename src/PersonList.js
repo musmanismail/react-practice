@@ -13,12 +13,21 @@ const PersonList = () => {
     });
   };
 
+  const addPersonList = (personSingle) => {
+    setPersons((prevArray) => {
+      return [...prevArray, personSingle];
+    });
+  };
+
   return (
     <React.Fragment>
       <div className="row">
         <div className="col-lg-4"></div>
         <div className="col-lg-2">
-          <PersonFrom persons={persons} setPersons={setPersons}></PersonFrom>
+          <PersonFrom
+            persons={persons}
+            addPersonList={addPersonList}
+          ></PersonFrom>
         </div>
       </div>
       <hr style={{ color: "red" }} />
