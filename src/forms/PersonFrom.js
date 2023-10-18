@@ -9,6 +9,8 @@ const PersonFrom = ({ persons, addPersonList }) => {
     personSiteLink: "",
   };
 
+  const [showError, setShowError] = useState(false);
+
   const [customPerson, setCustomPerson] = useState(personDefaultAttributes);
   const handleChange = (e) => {
     setCustomPerson((prevObject) => {
@@ -17,6 +19,18 @@ const PersonFrom = ({ persons, addPersonList }) => {
   };
   const handleSubmit = (e) => {
     e.preventDefault();
+
+    if (
+      !customPerson.personName ||
+      !customPerson.imageAddress ||
+      !customPerson.personBio ||
+      !customPerson.personSiteLink
+    ) {
+      setShowError(true);
+      return;
+    }
+
+    setShowError(false);
 
     let max_id = 0;
     persons.map((item) => {
@@ -31,6 +45,8 @@ const PersonFrom = ({ persons, addPersonList }) => {
 
   return (
     <>
+      {showError && <p style={{ color: "red" }}>Sorry No input is found</p>}
+
       <form onSubmit={handleSubmit} style={{ marginTop: "15%" }}>
         <div className="form-group">
           <label htmlFor="imageAddress">Image URL</label>

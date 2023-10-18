@@ -9,7 +9,7 @@ const App = () => {
     <React.Fragment>
       <div className="container-fluid">
         <PersonList></PersonList>
-        {/* <Sum></Sum> */}
+        <Sum></Sum>
       </div>
     </React.Fragment>
   );
