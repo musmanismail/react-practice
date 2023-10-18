@@ -18,11 +18,9 @@ const Sum = () => {
   };
 
   const handleIncrease = () => {
-    setTimeout(() => {
-      setCount((prev) => {
-        return prev + 1;
-      });
-    }, 4000);
+    setCount((prev) => {
+      return prev + 1;
+    });
   };
 
   return (
