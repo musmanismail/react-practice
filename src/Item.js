@@ -1,6 +1,6 @@
 import React from "react";
 
-const Item = ({ items }) => {
+const Item = ({ items, handleRemove }) => {
   return (
     <>
       <div className="row">
@@ -9,12 +9,18 @@ const Item = ({ items }) => {
           <ul className="list-group">
             {items.map((item) => {
               return (
-                <>
+                <div key={item.id}>
                   <li className="list-group-item">
                     {item.name}
-                    <button className="btn btn-warning">Remove</button>
+                    <button
+                      className="btn btn-warning"
+                      style={{ marginLeft: "80%" }}
+                      onClick={() => handleRemove(item.id)}
+                    >
+                      Remove
+                    </button>
                   </li>
-                </>
+                </div>
               );
             })}
           </ul>
