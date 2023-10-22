@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import Person from "./Person";
 import { personList } from "./data/persons";
 import PersonFrom from "./forms/PersonFrom";
+import NavBar from "./NavBar";
 
 const PersonList = () => {
   const [persons, setPersons] = useState(personList);
@@ -21,6 +22,7 @@ const PersonList = () => {
 
   return (
     <React.Fragment>
+      <NavBar />
       <div className="row">
         <div className="col-lg-4"></div>
         <div className="col-lg-2">

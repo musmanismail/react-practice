@@ -1,6 +1,7 @@
 import React, { useReducer, useState } from "react";
 import Item from "./Item";
 import AlertMessage from "./AlertMessage";
+import NavBar from "./NavBar";
 
 const reducerFunction = (prevState, action) => {
   switch (action.type) {
@@ -115,6 +116,7 @@ const ItemList = () => {
 
   return (
     <>
+      <NavBar />
       <div className="row" style={{ marginTop: "2%" }}>
         <div className="col-lg-4"></div>
         <div className="col-lg-4">

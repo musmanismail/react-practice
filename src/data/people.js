@@ -4,3 +4,10 @@ export const people = [
     name: "Usman",
   },
 ];
+
+export const locations = [
+  {
+    city: "lahore",
+    area: "shahdara pind",
+  },
+];

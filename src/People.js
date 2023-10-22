@@ -1,5 +1,6 @@
 import React, { useReducer, useState } from "react";
 import AlertMessage from "./AlertMessage";
+import NavBar from "./NavBar";
 
 const reducer = (prevState, action) => {
   switch (action.type) {
@@ -66,6 +67,7 @@ const People = () => {
 
   return (
     <>
+      <NavBar />
       <div
         className="d-flex justify-content-center"
         style={{ marginTop: "5%" }}

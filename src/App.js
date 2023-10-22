@@ -1,19 +1,17 @@
 import React from "react";
-import PersonList from "./PersonList";
-import Sum from "./Sum";
-import People from "./People";
-import ItemList from "./ItemList";
+
+import { createBrowserRouter, RouterProvider } from "react-router-dom";
+import { routerConfig } from "./routes/routerConfig";
 
 import "bootstrap/dist/css/bootstrap.css";
+
+const router = createBrowserRouter(routerConfig);
 
 const App = () => {
   return (
     <React.Fragment>
       <div className="container-fluid">
-        {/* <PersonList></PersonList>
-        <Sum></Sum> */}
-        {/* <People></People> */}
-        <ItemList />
+        <RouterProvider router={router} />
       </div>
     </React.Fragment>
   );

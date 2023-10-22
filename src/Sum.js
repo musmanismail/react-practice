@@ -1,5 +1,6 @@
 import React from "react";
 import { useState } from "react";
+import NavBar from "./NavBar";
 const sum_fun = (a, b) => {
   const result = a + b;
   return result;
@@ -25,6 +26,7 @@ const Sum = () => {
 
   return (
     <>
+      <NavBar />
       <div className="container">
         <div style={{ margin: "10%" }}>
           <h1 style={{ color: "red" }}>{count}</h1>
